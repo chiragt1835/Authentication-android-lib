@@ -18,12 +18,15 @@
         <activity
             android:name=".ui.addnote.AddNoteActivity"
             android:windowSoftInputMode="adjustResize"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.notelist.NoteListActivity"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true"
             android:theme="@style/Theme.App.Starting">
             <intent-filter>

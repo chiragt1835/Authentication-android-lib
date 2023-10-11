@@ -17,5 +17,6 @@
     <string name="darkMode" tools:ignore="ExtraTranslation">Dark Mode</string>
     <string name="lightMode" tools:ignore="ExtraTranslation">Light Mode</string>
     <string name="defaultMode" tools:ignore="ExtraTranslation">System Default</string>
+    <string name="you_have_not_added_any_notes">You have not added any notes.</string>
 
 </resources>

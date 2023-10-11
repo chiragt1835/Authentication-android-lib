@@ -6,15 +6,14 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.graphics.drawable.ColorDrawable
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.WindowManager
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatDelegate
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
-import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.gson.Gson
@@ -85,14 +84,26 @@ class NoteListActivity : AppCompatActivity() {
         viewModel.notesList.observe(this) { it ->
             if (it.isNullOrEmpty().not()) {
                 val list = it.filter {
-                    it.emailId == sharedPreference.getString(
-                        Constant.EMAIL_ID
-                    )
+                    it.emailId == sharedPreference.getString(Constant.EMAIL_ID)
                 } as ArrayList<NotesData>
-                noteListAdapter.addAddData(list)
+                if (list.isEmpty()) {
+                    manageEmptyView(true)
+                    noteListAdapter.clear()
+                } else {
+                    manageEmptyView(false)
+                    noteListAdapter.addAddData(list)
+                }
+
+            } else {
+                manageEmptyView(true)
+                noteListAdapter.clear()
             }
-            Log.e("TAG", "initObservers: ${Gson() to it}")
         }
+    }
+
+    private fun manageEmptyView(isVisible: Boolean) {
+        binding.txtEmptyView.isVisible = isVisible
+        binding.animationView.isVisible = isVisible
     }
 
     private fun setAdapter() {
@@ -131,19 +142,19 @@ class NoteListActivity : AppCompatActivity() {
 
         binding.btnDark.setOnClickListener {
             sharedPreference.setString(Constant.THEME_TYPE, Constant.DARK_THEME)
-            Utils.setNightMode(sharedPreference,this)
+            Utils.setNightMode(sharedPreference, this)
             dialog.dismiss()
         }
 
         binding.btnLight.setOnClickListener {
             sharedPreference.setString(Constant.THEME_TYPE, Constant.LIGHT_THEME)
-            Utils.setNightMode(sharedPreference,this)
+            Utils.setNightMode(sharedPreference, this)
             dialog.dismiss()
         }
 
         binding.btnSystem.setOnClickListener {
             sharedPreference.setString(Constant.THEME_TYPE, Constant.SYSTEM_DEFAULT)
-            Utils.setNightMode(sharedPreference,this)
+            Utils.setNightMode(sharedPreference, this)
             dialog.dismiss()
 
         }

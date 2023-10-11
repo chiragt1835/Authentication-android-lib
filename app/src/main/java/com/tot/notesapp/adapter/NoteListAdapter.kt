@@ -51,4 +51,13 @@ class NoteListAdapter(val context: Context) : RecyclerView.Adapter<NoteListAdapt
             e.printStackTrace()
         }
     }
+
+    fun clear() {
+        try {
+            this.notesList.clear()
+            notifyDataSetChanged()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
 }

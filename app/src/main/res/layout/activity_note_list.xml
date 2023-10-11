@@ -7,6 +7,7 @@
     android:background="@color/background">
 
     <View
+        android:id="@+id/view2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/bg_gradient"
@@ -26,8 +27,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center_vertical"
             android:fontFamily="@font/poppins_semi_bold"
+            android:gravity="center_vertical"
             android:includeFontPadding="false"
             android:text="@string/notes_app"
             android:textColor="@color/common_text_color"
@@ -52,30 +53,30 @@
         android:id="@+id/txtUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
         android:fontFamily="@font/poppins_semi_bold"
         android:includeFontPadding="false"
         android:text="@string/welcome_john"
         android:textColor="@color/common_text_color"
         android:textSize="@dimen/_22ssp"
-        android:layout_marginTop="@dimen/_30sdp"
-        app:layout_constraintTop_toBottomOf="@id/llHeader"
         app:layout_constraintBottom_toTopOf="@id/tv_start_saving"
-        app:layout_constraintStart_toStartOf="@+id/tv_start_saving" />
+        app:layout_constraintStart_toStartOf="@+id/tv_start_saving"
+        app:layout_constraintTop_toBottomOf="@id/llHeader" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_start_saving"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:fontFamily="@font/poppins_regular"
         android:includeFontPadding="false"
         android:text="@string/start_saving"
         android:textColor="@color/common_text_color"
-        android:layout_marginBottom="@dimen/_20sdp"
         android:textSize="@dimen/_11ssp"
         app:layout_constraintBottom_toTopOf="@id/guideTop"
-        app:layout_constraintTop_toBottomOf="@id/txtUserName"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtUserName" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_notes"
@@ -99,10 +100,10 @@
         android:id="@+id/imgAddNotes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_notes"
-        android:adjustViewBounds="true"
         android:layout_marginEnd="@dimen/_10sdp"
         android:layout_marginBottom="@dimen/_10sdp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/ic_add_notes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -112,5 +113,36 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.22" />
+
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
+        app:layout_constraintBottom_toTopOf="@+id/txtEmptyView"
+        app:layout_constraintTop_toTopOf="@id/guideTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:lottie_autoPlay="true"
+        android:visibility="gone"
+        app:lottie_fileName="empty_view.json"
+        app:lottie_loop="true" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtEmptyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/poppins_medium"
+        android:includeFontPadding="false"
+        android:text="@string/you_have_not_added_any_notes"
+        android:textColor="@color/black"
+        android:visibility="gone"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/animation_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

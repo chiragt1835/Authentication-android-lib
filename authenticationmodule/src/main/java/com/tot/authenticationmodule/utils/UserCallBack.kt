@@ -8,4 +8,6 @@ interface UserCallBack {
 
     fun onError()
 
+    fun onBackPressed()
+
 }

@@ -4,7 +4,7 @@
     <string name="please_enter_email_id">Please Enter Email Id</string>
     <string name="please_enter_valid_email">Please Enter Valid Email</string>
     <string name="please_enter_password">Please Enter Password</string>
-    <string name="password_pattern_mismatch">Password is too short\n\nYou Need to enter minimum 6 characters without white spaces.</string>
+    <string name="password_pattern_mismatch">Password is too short. You Need to enter minimum 6 characters without white spaces.</string>
     <string name="please_enter_last_name">Please Enter Last Name</string>
     <string name="please_enter_first_name">Please Enter First Name</string>
     <string name="please_enter_phone_number">Please Enter Phone Number</string>

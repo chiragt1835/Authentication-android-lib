@@ -14,6 +14,7 @@ import com.tot.authenticationmodule.AuthenticationApp
 import com.tot.authenticationmodule.R
 import com.tot.authenticationmodule.data.local.UserData
 import com.tot.authenticationmodule.databinding.ActivityRegisterBinding
+import com.tot.authenticationmodule.ui.login.LoginActivity
 import com.tot.authenticationmodule.utils.Validation
 
 class RegisterActivity : AppCompatActivity() {
@@ -37,7 +38,9 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.txtLogin.setOnClickListener {
-            finish()
+            val intent = Intent(this, LoginActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            startActivity(intent)
         }
 
     }
@@ -110,7 +113,9 @@ class RegisterActivity : AppCompatActivity() {
 
         if (isRedirect) {
             builder.setPositiveButton(getString(R.string.login)) { _: DialogInterface?, _: Int ->
-                finish()
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                startActivity(intent)
             }
         } else {
             builder.setPositiveButton(getString(R.string.cancel)) { dialog: DialogInterface, _: Int ->

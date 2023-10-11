@@ -39,7 +39,7 @@
             android:includeFontPadding="false"
             android:text="@string/notes_app"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/common_text_color"
             android:textSize="@dimen/_20ssp"
             app:layout_constraintBottom_toTopOf="@+id/guideTop"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
@@ -99,7 +99,7 @@
                     android:layout_marginTop="@dimen/_15sdp"
                     android:hint="@string/enter_your_pass"
                     android:imeOptions="actionDone"
-                    android:inputType="text" />
+                    android:inputType="textPassword" />
 
             </LinearLayout>
 
@@ -122,7 +122,7 @@
             android:id="@+id/txtNewMember"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:fontFamily="@font/poppins_semi_bold"
             android:includeFontPadding="false"
             android:text="@string/newMember_1"
@@ -140,7 +140,7 @@
             android:id="@+id/txtRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:fontFamily="@font/poppins_semi_bold"
             android:includeFontPadding="false"
             android:text="@string/register_now"

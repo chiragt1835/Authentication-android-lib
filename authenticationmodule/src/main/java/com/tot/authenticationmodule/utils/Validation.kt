@@ -86,11 +86,6 @@ class Validation(private val context: Context) {
                 Toast.LENGTH_SHORT
             ).show()
             false
-        } else if (!confirmPasswordText.matches(passwordVal.toRegex())) {
-            Toast.makeText(
-                context, context.getString(R.string.password_pattern_mismatch), Toast.LENGTH_LONG
-            ).show()
-            false
         } else if (passwordText != confirmPasswordText) {
             Toast.makeText(
                 context,

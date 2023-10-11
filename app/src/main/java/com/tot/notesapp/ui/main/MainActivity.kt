@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         sharedPreference = SharedPreference(this)
         if (sharedPreference.getBoolean(Constant.IS_LOGIN)){
             val intent = Intent(this@MainActivity, NoteListActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
         }else{
             initAuthFLow()
@@ -62,11 +63,16 @@ class MainActivity : AppCompatActivity() {
                 sharedPreference.setString(Constant.EMAIL_ID, userData.emailId)
                 sharedPreference.setString(Constant.USER_DATA, Gson().toJson(userData))
                 val intent = Intent(this@MainActivity, NoteListActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intent)
                 finish()
             }
 
             override fun onError() {
+            }
+
+            override fun onBackPressed() {
+                finish()
             }
         })
     }
