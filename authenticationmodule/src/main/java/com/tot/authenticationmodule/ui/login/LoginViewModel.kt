@@ -36,7 +36,7 @@ class LoginViewModel(private val userDataRepository: UserDataRepository) : ViewM
 
 }
 
-class VideoViewModelFactory(private val userDataRepository: UserDataRepository) : ViewModelProvider.NewInstanceFactory() {
+class LoginViewModelFactory(private val userDataRepository: UserDataRepository) : ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")

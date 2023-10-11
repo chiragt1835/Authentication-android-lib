@@ -3,18 +3,20 @@
     <style name="Base.Theme.NotesApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="android:statusBarColor">@color/purpleOne</item>
     </style>
 
     <style name="Theme.NotesApp" parent="Base.Theme.NotesApp" />
 
 
     <style name="Theme.App.Starting" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/black</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowSplashScreenBackground">@color/white</item>
         <item name="android:windowBackground">@drawable/splash_background</item>
         <item name="android:windowSplashScreenAnimatedIcon" tools:ignore="NewApi">@drawable/ic_app_logo</item>
         <item name="android:windowSplashScreenBrandingImage" tools:ignore="NewApi">@drawable/ic_brand_logo</item>
         <item name="postSplashScreenTheme">@style/Theme.NotesApp</item>
     </style>
-
 
 </resources>

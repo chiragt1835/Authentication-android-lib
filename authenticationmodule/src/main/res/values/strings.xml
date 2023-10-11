@@ -10,9 +10,33 @@
     <string name="please_enter_phone_number">Please Enter Phone Number</string>
     <string name="password_and_confirm_password_should_be_same">Password and confirm password should be same</string>
     <string name="please_enter_password_confirm">Please Enter Confirm Password</string>
-    <string name="this_email_id_is_already_exist_please_try_with_another_email_id">This Email Id is already exist. Please try with another Email ID</string>
-    <string name="register_successfully_and_now_you_can_login_with_credentials">Register Successfully and Now you can login with credentials.</string>
+    <string name="this_email_id_is_already_exist">This Email Id is already exist. Please try with another Email ID</string>
+    <string name="register_successfully">Register Successfully and Now you can login with this credentials.</string>
     <string name="you_enter_wrong_password">You enter wrong password</string>
 
+
+    <string name="notes_app">Notes App</string>
+    <string name="welcome">Welcome!</string>
+    <string name="loginText">Login with your credentials.</string>
+    <string name="enter_your_email">Enter email</string>
+    <string name="enter_your_pass">Enter password</string>
+    <string name="login">Login</string>
+
+    <string name="newMember_1">New Member?</string>
+    <string name="register_now">Register now</string>
+    <string name="alert">Alert !</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="registerText">Register with us now!</string>
+    <string name="first_name">Enter First Name</string>
+    <string name="last_name">Enter Last name</string>
+    <string name="phone">Enter Phone No</string>
+    <string name="enter_your_c_pass">Enter confirm password</string>
+    <string name="register">Register</string>
+
+    <string name="already_1">Already a member?</string>
+    <string name="login_now">Login</string>
 
 </resources>

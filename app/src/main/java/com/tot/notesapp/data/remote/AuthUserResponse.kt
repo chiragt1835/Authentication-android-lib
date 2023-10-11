@@ -1,4 +1,4 @@
-package com.tot.notesapp.ui.data.remote
+package com.tot.notesapp.data.remote
 
 data class AuthUserResponse(
     var id: Int = 0,

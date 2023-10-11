@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -56,6 +57,14 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
     implementation("androidx.core:core-splashscreen:1.1.0-alpha02")
 
+    implementation("androidx.room:room-runtime:2.5.2")
+    ksp("androidx.room:room-compiler:2.5.2")
+    implementation("androidx.room:room-ktx:2.5.2")
 
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+
+    implementation("androidx.activity:activity-ktx:1.8.0")
+    implementation("com.google.code.gson:gson:2.10.1")
 
 }

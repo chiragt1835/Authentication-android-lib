@@ -4,8 +4,8 @@ object Constant {
     const val DATABASE_NAME = "user_database"
     const val DB_TABLE_NAME = "user_data"
 
-    // preference key
-    const val USER_DATA="user_data"
-    const val IS_LOGIN = "is_Login"
-
+    const val THEME_TYPE = "THEME_TYPE"
+    const val DARK_THEME = "DARK_THEME"
+    const val LIGHT_THEME = "LIGHT_THEME"
+    const val SYSTEM_DEFAULT = "SYSTEM_DEFAULT"
 }

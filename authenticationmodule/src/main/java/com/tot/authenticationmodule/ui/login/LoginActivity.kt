@@ -1,11 +1,16 @@
 package com.tot.authenticationmodule.ui.login
 
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import android.widget.Button
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import com.google.gson.Gson
 import com.tot.authenticationmodule.AuthenticationApp
 import com.tot.authenticationmodule.R
@@ -13,11 +18,12 @@ import com.tot.authenticationmodule.databinding.ActivityLoginBinding
 import com.tot.authenticationmodule.ui.register.RegisterActivity
 import com.tot.authenticationmodule.utils.Validation
 
+
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var validation: Validation
-    private val viewModel: LoginViewModel by viewModels { VideoViewModelFactory((application as AuthenticationApp).repository) }
+    private val viewModel: LoginViewModel by viewModels { LoginViewModelFactory((application as AuthenticationApp).repository) }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,45 +34,73 @@ class LoginActivity : AppCompatActivity() {
         init()
     }
 
-    private fun init(){
+    private fun init() {
         initObservers()
         binding.btnLogin.setOnClickListener {
             loginUser()
         }
-        binding.btnRegister.setOnClickListener {
+        binding.txtRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
     }
 
     private fun initObservers() {
-        viewModel.userData.observe(this){
-            if (it == null){
-                Toast.makeText(this, getString(R.string.login_error_message), Toast.LENGTH_SHORT).show()
-            }else{
-                Log.e("TAG", "getDataFromDB: " + Gson().toJson(it) )
-                if (binding.etPasswordNumber.text.toString() == it.password){
+        viewModel.userData.observe(this) {
+            if (it == null) {
+                showAlertDialog(getString(R.string.login_error_message), true)
+            } else {
+                Log.e("TAG", "getDataFromDB: " + Gson().toJson(it))
+                if (binding.etPassword.text.toString() == it.password) {
                     finish()
                     AuthenticationApp.instance?.userCallBack?.onSuccess(it)
-                }else{
-                    Toast.makeText(this,
-                        getString(R.string.you_enter_wrong_password), Toast.LENGTH_SHORT).show()
+                } else {
+                    showAlertDialog(getString(R.string.you_enter_wrong_password), false)
                 }
             }
         }
     }
 
-    private fun loginUser(){
-        if (!validation.validateEmail(binding.etEmailNumber.text.toString()) ) {
+    private fun loginUser() {
+        if (!validation.validateEmail(binding.etEmail.text.toString())) {
             return
-        }else if (!validation.validatePassword(binding.etPasswordNumber.text.toString()) ) {
+        } else if (!validation.validatePassword(binding.etPassword.text.toString())) {
             return
-        }else{
+        } else {
             getDataFromDB()
         }
     }
 
-    private fun getDataFromDB(){
-        viewModel.getUserData(binding.etEmailNumber.text.toString())
+    private fun getDataFromDB() {
+        viewModel.getUserData(binding.etEmail.text.toString())
+    }
+
+    private fun showAlertDialog(message: String, isRedirect: Boolean) {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+        builder.setMessage(message)
+        builder.setCancelable(false)
+
+        val typefaceRegular =  ResourcesCompat.getFont(this, R.font.poppins_regular)
+        val typefaceMedium =  ResourcesCompat.getFont(this, R.font.poppins_medium)
+
+        if (isRedirect) {
+            builder.setPositiveButton(getString(R.string.yes)) { _: DialogInterface?, _: Int ->
+                val intent = Intent(this, RegisterActivity::class.java)
+                startActivity(intent)
+            }
+            builder.setNegativeButton(getString(R.string.no)) { dialog: DialogInterface, _: Int ->
+                dialog.cancel()
+            }
+        } else {
+            builder.setPositiveButton(getString(R.string.cancel)) { dialog: DialogInterface, _: Int ->
+                dialog.cancel()
+            }
+        }
+        val alertDialog: AlertDialog = builder.create()
+        alertDialog.show()
+        alertDialog.findViewById<TextView>(android.R.id.message).typeface = typefaceRegular
+        alertDialog.findViewById<Button>(android.R.id.button1).typeface = typefaceMedium
+        alertDialog.findViewById<Button>(android.R.id.button2).typeface = typefaceMedium
+
     }
 
 }

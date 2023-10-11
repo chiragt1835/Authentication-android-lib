@@ -27,7 +27,7 @@ class RegisterViewModel(private val userDataRepository: UserDataRepository) : Vi
 
 }
 
-class VideoViewModelFactory(private val userDataRepository: UserDataRepository) :
+class RegisterViewModelFactory(private val userDataRepository: UserDataRepository) :
     ViewModelProvider.NewInstanceFactory() {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(RegisterViewModel::class.java)) {

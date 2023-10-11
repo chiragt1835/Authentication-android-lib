@@ -1,4 +1,4 @@
-package com.tot.notesapp.ui.utils
+package com.tot.notesapp.utils
 
 import android.content.Context
 
@@ -41,5 +41,11 @@ class SharedPreference(private val context: Context) {
         val prefs = context.getSharedPreferences(PREFS_NAME, 0)
         return prefs.getBoolean(key, false)
     }
+
+    fun clearAllPref() {
+        val prefs = context.getSharedPreferences(PREFS_NAME, 0)
+        prefs.edit().clear().apply()
+    }
+
 
 }
